@@ -1,5 +1,5 @@
 ---
-- name: Install and customize the Apache server on CentOS VM
+- name: Install and customize the Apache server on Virtual Machines
   hosts: application_servers
   gather_facts: true
   become: true
@@ -7,6 +7,9 @@
     - [ "variables/{{ ansible_facts['os_family'] }}.yml", "variables/debian.yml" ]
 
   tasks:
+    - debug:
+        msg: Operating System of this box is "{{ ansible_facts['os_family'] }}"
+
     - name: Ensure Apache is installed
       yum:
         name: "{{ apache_service_name }}"
@@ -22,3 +25,12 @@
     
     - name: Ensure Apache is restarted after the default index.html overridden
       service: name="{{ apache_service_name }}" state=restarted
+      notify:
+      - Print out the message when the box has changed
+
+  handlers:
+    - name: Print out the message when the box has changed
+      debug:
+        msg:
+        - "Sometimes you want a task to run only when a change is made on a machine. For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. "
+        - "Link to handlers page explained --> https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html"

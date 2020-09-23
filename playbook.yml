@@ -12,3 +12,11 @@
     
     - name: Ensure Apache is running and starts at boot
       service: name=httpd state=started enabled=true
+
+    - name: Copy customized index.html page
+      copy:
+        src: custom/index.html
+        dest: /var/www/html
+
+    - name: Ensure Apache is restarted after the default index.html overridden
+      service: name=httpd state=restarted

@@ -8,3 +8,10 @@ How to run the playbook -->
 ansible-playbook -i inventory.ini playbook.yml
 
 http://127.0.0.1:80 -- open up the Apache index.html page
+
+http service status -->
+systemctl restart httpd
+sudo systemctl status httpd
+
+https folder in centos -->
+/etc/httpd/conf/httpd.conf 

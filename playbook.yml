@@ -1,22 +1,24 @@
 ---
 - name: Install and customize the Apache server on CentOS VM
-  hosts: app
+  hosts: application_servers
   gather_facts: true
   become: true
+  vars_files:
+    - variables/centos.yml
 
   tasks:
     - name: Ensure Apache is installed
       yum:
-        name: httpd
+        name: "{{ apache_service_name }}"
         state: present
     
     - name: Ensure Apache is running and starts at boot
-      service: name=httpd state=started enabled=true
+      service: name="{{ apache_service_name }}" state=started enabled=true
 
     - name: Copy customized index.html page
       copy:
         src: custom/index.html
-        dest: /var/www/html
-
+        dest: "{{ path_to_index_file }}"
+    
     - name: Ensure Apache is restarted after the default index.html overridden
-      service: name=httpd state=restarted
+      service: name="{{ apache_service_name }}" state=restarted

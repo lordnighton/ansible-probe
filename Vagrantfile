@@ -11,9 +11,9 @@ Vagrant.configure("2") do |config|
     vb.memory = 256
   end
 
-  config.vm.define "app" do |app|
-    app.vm.hostname = "ubuntu.apache2.test"
-    app.vm.network :private_network, ip: "192.168.55.5"
+  config.vm.define "application_servers" do |app_server_1|
+    app_server_1.vm.hostname = "centos.httpd.test"
+    app_server_1.vm.network :private_network, ip: "192.168.55.5"
     config.vm.network :forwarded_port, host: 80, guest: 80 
   end
 

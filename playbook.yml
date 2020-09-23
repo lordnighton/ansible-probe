@@ -4,7 +4,7 @@
   gather_facts: true
   become: true
   vars_files:
-    - variables/centos.yml
+    - [ "variables/{{ ansible_facts['os_family'] }}.yml", "variables/debian.yml" ]
 
   tasks:
     - name: Ensure Apache is installed

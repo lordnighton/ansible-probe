@@ -16,3 +16,10 @@ sudo systemctl status httpd
 
 https folder in centos -->
 /etc/httpd/conf/httpd.conf 
+
+
+# Hosts updater
+- https://github.com/agiledivider/vagrant-hostsupdater
+- $ vagrant plugin install vagrant-hostsupdater
+
+http://svityaz.com:80

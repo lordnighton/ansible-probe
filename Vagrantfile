@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "application_servers" do |app_server_1|
     app_server_1.vm.hostname = "centos.httpd.test"
     app_server_1.vm.network :private_network, ip: "192.168.55.5"
+    app_server_1.hostsupdater.aliases = ["svityaz.com", "lordnighton.com"]
     config.vm.network :forwarded_port, host: 80, guest: 80 
   end
 

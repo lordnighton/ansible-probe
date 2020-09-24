@@ -61,5 +61,18 @@
 - The package repositories are NOT 1000% reliable (cannot download a package for CentOS twice in 20 min)
 - yum --> package
 
+## Features
+- Vault
+```
+# Run to encrypt the file with a secret (e.g. DB password)
+$ ansible-vault encrypt secrets/db_password.yml
+$ ansible-vault decrypt secrets/db_password.yml
+$ ansible-vault edit secrets/db_password.yml
+$ ansible-vault rekey secrets/db_password.yml
+
+# Run the playbook and enter `test` as a key to Ansible Vault
+# Enjoy the DB password value printed out
+```
+
 # Vagrant
 TBD

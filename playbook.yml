@@ -4,6 +4,7 @@
   gather_facts: true
   become: true
   vars_files:
+    - secrets/db_password.yml
     - [ "variables/{{ ansible_facts['os_family'] }}.yml", "variables/debian.yml" ]
 
   tasks:
@@ -27,6 +28,17 @@
       service: name="{{ apache_service_name }}" state=restarted
       notify:
       - Print out the message when the box has changed
+
+    # The following task is just an example of how to set the environment variables
+    # and print out the values of decrypted secrets  
+    - name: Register the decrypted DB password
+      shell: echo $DB_PASSWORD
+      environment:
+        DB_PASSWORD: "{{ db_password }}"
+      register: printed_out_db_password
+
+    - name: Print out the decrypted DB password
+      debug: var=printed_out_db_password.stdout
 
   handlers:
     - name: Print out the message when the box has changed

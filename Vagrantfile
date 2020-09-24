@@ -21,5 +21,6 @@ Vagrant.configure("2") do |config|
     ansible.host_key_checking = false
     ansible.playbook = "playbook.yml"
     ansible.inventory_path = "inventory.ini"
+    ansible.raw_arguments  = "--ask-vault-pass"
   end
 end

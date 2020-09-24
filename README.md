@@ -61,6 +61,17 @@
 - The package repositories are NOT 1000% reliable (cannot download a package for CentOS twice in 20 min)
 - yum --> package
 
+## Ansible architecture
+- https://docs.ansible.com/ansible/latest/dev_guide/overview_architecture.html#ansible-architecture
+- Modules
+  - Ansible works by connecting to your nodes and pushing out scripts called “Ansible modules” to them. Most modules accept parameters that describe the desired state of the system. Ansible then executes these modules (over SSH by default), and removes them when finished. Your library of modules can reside on any machine, and there are no servers, daemons, or databases required.
+- Plugins
+  - Plugins augment Ansible’s core functionality. While modules execute on the target system in separate processes (usually that means on a remote system), plugins execute on the control node within the /usr/bin/ansible process. Plugins offer options and extensions for the core features of Ansible - transforming data, logging output, connecting to inventory, and more. Ansible ships with a number of handy plugins, and you can easily write your own. For example, you can write an inventory plugin to connect to any datasource that returns JSON. Plugins must be written in Python.
+- Inventory
+  - By default, Ansible represents the machines it manages in a file (INI, YAML, and so on) that puts all of your managed machines in groups of your own choosing.
+- Playbooks
+  - Playbooks can finely orchestrate multiple slices of your infrastructure topology, with very detailed control over how many machines to tackle at a time. This is where Ansible starts to get most interesting.
+
 ## Features
 - Vault
 ```

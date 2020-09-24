@@ -71,6 +71,8 @@
   - By default, Ansible represents the machines it manages in a file (INI, YAML, and so on) that puts all of your managed machines in groups of your own choosing.
 - Playbooks
   - Playbooks can finely orchestrate multiple slices of your infrastructure topology, with very detailed control over how many machines to tackle at a time. This is where Ansible starts to get most interesting.
+- Roles
+  - Mechanism for organizing the playbooks (not a part of an Ansible architecture, but definitely worth mentioning)
 
 ## Features
 - Vault

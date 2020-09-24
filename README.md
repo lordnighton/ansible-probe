@@ -6,6 +6,12 @@
 <input type="checkbox" unchecked>Vagrant</br>
 <input type="checkbox" unchecked>Live demo (Vagrant + Ansible)</br>
 
+# Golden hammer rule
+The law of the instrument, law of the hammer, Maslow's hammer (or gavel), or golden hammer is a cognitive bias that involves an over-reliance on a familiar tool. As Abraham Maslow said in 1966:
+```
+"I suppose it is tempting, if the only tool you have is a hammer, to treat everything as if it were a nail."
+```
+
 # Ansible
 - What is Ansible?
   - Ansible is powerful IT automation that you can learn quickly. It's simple enough for everyone in your IT team to use, yet powerful enough to automate even the most complex deployments. Ansible handles repetitive tasks, giving your team more time to focus on innovation.

@@ -81,7 +81,9 @@ The law of the instrument, law of the hammer, Maslow's hammer (or gavel), or gol
   - Mechanism for organizing the playbooks (not a part of an Ansible architecture, but definitely worth mentioning)
 
 ## Features
-- Vault
+- Ad-hock commands
+- Running the playbooks without provisioning in Vagrant
+- Vault for secrets
 ```
 # Run to encrypt the file with a secret (e.g. DB password)
 $ ansible-vault encrypt secrets/db_password.yml
@@ -92,6 +94,32 @@ $ ansible-vault rekey secrets/db_password.yml
 # Run the playbook and enter `test` as a key to Ansible Vault
 # Enjoy the DB password value printed out
 ```
+- Properties resolution
+- Handlers
+- Inventory
+- Debugging capabilities
+- Loads of other things (see the live demo session)
 
 # Vagrant
-TBD
+- **HashiCorp Vagrant** provides the same, easy workflow regardless of your role as a developer, operator, or designer. It leverages a declarative configuration file which describes all your software requirements, packages, operating system configuration, users, and more.
+- My understanding of Vagrant
+- Troubles during the **Mac** installation 🔥🍑
+- VirtualBox provider
+- Pretty simple
+  - https://www.vagrantup.com/
+  - https://learn.hashicorp.com/collections/vagrant/getting-started
+- Commands
+```
+$ vagrant up
+$ vagrant destroy -f
+$ vagrant provision
+$ vagrant reload // The equivalent of running a halt followed by an up
+$ vagrant box list
+$ vagrant ssh
+$ vagrant ssh-config
+```
+- Powerful plugins
+  - hostsupdater
+```
+$ vagrant plugin install vagrant-hostsupdater
+```

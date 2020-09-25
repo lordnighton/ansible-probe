@@ -5,7 +5,7 @@
   become: true
   vars_files:
     - secrets/db_password.yml
-    - [ "variables/{{ ansible_facts['os_family'] }}.yml", "variables/debian.yml" ]
+    - ["variables/{{ ansible_facts['os_family'] }}.yml", "variables/debian.yml"]
 
   tasks:
     - debug:
@@ -15,7 +15,7 @@
       yum:
         name: "{{ apache_service_name }}"
         state: present
-    
+
     - name: Ensure Apache is running and starts at boot
       service: name="{{ apache_service_name }}" state=started enabled=true
 
@@ -23,14 +23,14 @@
       copy:
         src: custom/index.html
         dest: "{{ path_to_index_file }}"
-    
+
     - name: Ensure Apache is restarted after the default index.html overridden
       service: name="{{ apache_service_name }}" state=restarted
       notify:
-      - Print out the message when the box has changed
+        - Print out the message when the box has changed
 
-    # The following task is just an example of how to set the environment variables
-    # and print out the values of decrypted secrets  
+    # The following task is just an example of how to set the environment
+    # variables and print out the values of decrypted secrets
     - name: Register the decrypted DB password
       shell: echo $DB_PASSWORD
       environment:
@@ -44,5 +44,5 @@
     - name: Print out the message when the box has changed
       debug:
         msg:
-        - "Sometimes you want a task to run only when a change is made on a machine. For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. "
-        - "Link to handlers page explained --> https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html"
+          - "Sometimes you want a task to run only when a change is made on a machine. For example, you may want to restart a service if a task updates the configuration of that service, but not if the configuration is unchanged. "
+          - "Link to handlers page explained --> https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html"

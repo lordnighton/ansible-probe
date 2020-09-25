@@ -23,3 +23,6 @@ https folder in centos -->
 - $ vagrant plugin install vagrant-hostsupdater
 
 http://svityaz.com:80
+
+# pip3 install yamllint --> installs the useful tool to check yaml syntax
+yamllint .
